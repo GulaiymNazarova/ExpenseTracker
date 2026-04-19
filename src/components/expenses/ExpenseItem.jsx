@@ -1,4 +1,4 @@
-//импорты
+//импорттор
 import ExpenseDate from './ExpenseDate'
 import './ExpenseItem.css'
 
@@ -9,10 +9,10 @@ const ExpenseItem = (props) => {
             {/*Титул*/}
             <h2 className='expense-item__description'>{props.expense.title}</h2>
 
-            {/* цена */}
+            {/*Цена */}
             <div className='expense-item__price'>{props.expense.price} KGS</div>
 
-            {/* дата, стоят через другой компонент */}
+            {/*отображаем дату через отдельный компонент*/}
             <ExpenseDate date={props.expense.date}/>
         </div>
     )

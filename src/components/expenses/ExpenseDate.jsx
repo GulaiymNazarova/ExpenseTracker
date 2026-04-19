@@ -1,4 +1,4 @@
-// импорты
+// импорттор
 import React from 'react'
 import './ExpenseDate.css'
 
@@ -6,7 +6,7 @@ const ExpenseDate = (props) => {
 
     const expenseDate = props.date
 
-// парс даты, чтобы она могла восприниматься
+// получаем данные
     const year = expenseDate.getFullYear()
     const month = expenseDate.toLocaleString("en-US", {month: "long"})
     const day = expenseDate.toLocaleString("en-US", {day: "2-digit"})

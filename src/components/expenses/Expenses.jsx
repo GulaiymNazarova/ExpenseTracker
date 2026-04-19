@@ -1,4 +1,4 @@
-// импорты
+// импорттор
 import { useState } from "react";
 import Card from "../ui/Card";
 import ExpenseItem from "./ExpenseItem";
@@ -6,15 +6,15 @@ import './Expenses.css'
 
 const Expenses = (props) => {
 
-    //обьявление переменной а также , поскольку это usestate добавляет возможность прямого изменения через сет
+    //создаем переменную для года и функцию для ее изменения через useState
     const [selectedYear, setSelectedYear] = useState("2025");
 
-    // обычный хэндлер который позволяет изменять переменную года
+    //функция которая срабатывает при выборе года в выпадающем списке
     const filterChangeHandler = (event) => {
         setSelectedYear(event.target.value);
     };
 
-    // логика фильтрации по году где айтемы появляются только по выбранному году
+    // фильтруем расходы, оставляем только те у которых год совпадает с выбранным
     const filteredExpenses = props.expenses.filter(el => {
         return el.date.getFullYear().toString() === selectedYear;
     });
@@ -22,7 +22,7 @@ const Expenses = (props) => {
     return (
         <Card className="expenses">
 
-            {/* опции для фильтрации, мы их ввели мануально, они здесь для сортировки по годам, можно сделать чтобы эти года брались из существующих данных*/}
+            {/*блок с фильтром по годам, значения прописаны вручную*/}
             <div className="expenses-filter">
                 <label>Filter by year</label>
                 <select value={selectedYear} onChange={filterChangeHandler}>
@@ -32,7 +32,7 @@ const Expenses = (props) => {
                 </select>
             </div>
 
-            {/* conditional rendering, рендерит окно в зависимости от use state переменнойб требется чтобы окно появлялось только когда там есть контент*/}
+            {/*условный рендер: если нет расходов показываем текст, иначе список*/}
             {
                 filteredExpenses.length === 0
                     ? <p>No expenses found</p>

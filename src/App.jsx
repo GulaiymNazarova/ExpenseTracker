@@ -4,7 +4,7 @@ import './App.css';
 import Expenses from './components/expenses/Expenses';
 import NewExpenses from './components/newExepnses/NewExpenses';
 
-// dummy data, симулирует настояющую инфу
+// тестовые данные, имитируют расходы
 const DUMMY_EXPENSES = [
   {
     id: 1,
@@ -28,10 +28,10 @@ const DUMMY_EXPENSES = [
 
 function App() {
 
-  // стейт всех экспенсов, следится глобально поэтому сидит в апп
+  // глобальное состояние всех расходов
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
 
-  // хэндлер добавления новых экспенсов
+  // добавляем новый расход в начало списка
   const addExpenseHandler = (expense) => {
     return setExpenses([expense, ...expenses])
   }
@@ -39,10 +39,10 @@ function App() {
   return (
       <div className="App">
 
-        {/* компонент для добавки экспенсов */}
+        {/* форма для добавления нового расхода */}
         <NewExpenses onAdd={addExpenseHandler}/>
 
-        {/* компонент для показа экспенсов */}
+        {/* список всех расходов */}
         <Expenses expenses={expenses}/>
 
       </div>

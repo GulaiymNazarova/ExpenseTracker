@@ -1,18 +1,18 @@
-// импорты
+//imports
 import React, {useState} from 'react'
 import './ExpenseForm.css'
 import Button from '../ui/Button'
 
 const ExpenseForm = ({onGet}) => {
 
-    // переменный форма в виде одной, требуется для отправки и использует usestate
+    // один объект для всех полей формы, через useState
     const [userInputs, setUserInputs] = useState({
         title: '',
         price: '',
         date: ''
     })
 
-// единый инпут хэндлер, проверяет что изменяется и в зависимости от этого меняет соотвествующую переменную
+// универсальный обработчик, определяет какое поле изменилось и обновляет его
     const InputChangeHandler = (e) => {
         if (e.target.name === 'title') {
             setUserInputs({
@@ -32,11 +32,11 @@ const ExpenseForm = ({onGet}) => {
         }
     }
 
-// функция отправки
+// отправка формы
     const submitHandler = (e) => {
         e.preventDefault()
 
-        // lifting up, который дает инфу parent компоненту
+        // передаем данные наверх в родительский компонент
         onGet({
             title:userInputs.title,
             price: userInputs.price,
@@ -48,25 +48,25 @@ const ExpenseForm = ({onGet}) => {
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
 
-                {/* инпут титула */}
+                {/* поле для названия */}
                 <div className='new-expense__control'>
                     <label>Title</label>
                     <input name='title' type="text" onChange={InputChangeHandler} />
                 </div>
 
-                {/* простой инпут для цены */}
+                {/* поле для цены */}
                 <div className='new-expense__control'>
                     <label>Price</label>
                     <input name='price' type="number" onChange={InputChangeHandler} />
                 </div>
 
-                {/* инпут для даты */}
+                {/* поле для даты */}
                 <div className='new-expense__control'>
                     <label>Date</label>
                     <input name='date' type="date" onChange={InputChangeHandler} />
                 </div>
 
-                {/* кнопка отправки через другой компонент + класс оболочки */}
+                {/* кнопка отправки */}
                 <div className='new-expense__actions'>
                     <Button>Add Expense</Button>
                 </div>

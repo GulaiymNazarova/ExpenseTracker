@@ -1,4 +1,4 @@
-// импорты
+//импорттор
 import React from 'react'
 import ExpenseForm from './ExpenseForm'
 import './NewExpenses.css'
@@ -6,13 +6,13 @@ import Card from '../ui/Card'
 
 const NewExpenses = (props) => {
 
-    // хэндлер получающий инфу из формы
+    // получаем данные из формы
     const getExpenseHandler = (expense) => {
 
-        // добавление уникального айдишника
+        // генерируем случайный id для нового расхода
         const expenseWithId = {...expense, id: Math.random().toString()}
 
-        // lifting up, передача данных parent компоненту
+        // отправляем данные в родительский компонент
         props.onAdd(expenseWithId)
     }
 
